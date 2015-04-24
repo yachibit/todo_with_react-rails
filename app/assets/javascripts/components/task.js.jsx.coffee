@@ -1,7 +1,11 @@
 @Task = React.createClass
+  _onDestroy: ->
+    @props.onDestroy(@props.task.id)
+
   render: ->
-    taskNodes = @props.tasks.map (task) ->
-      `<li>{task.title}</li>`
-    `<ul className='Task'>
-       {taskNodes}
-     </ul>`
+    `<li>
+       {this.props.task.title}
+       <button className='destroy' onClick={this._onDestroy}>
+         x
+       </button>
+     </li>`
